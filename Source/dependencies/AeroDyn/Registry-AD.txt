@@ -144,9 +144,9 @@ typedef	^	BladeParms	ReKi	R	-	-	-	"Rotor radius"
 typedef	^	BladeParms	ReKi	BladeLength	-	-	-	"Blade Length"
 #typedef	^	BladeParms	INTEGER	NB	-	-	-	"Number odem blades"
 ### Umass WINDS starts:
-typedef	^	BladeParms	DbKi	TipRadius	-	-	-	
-typedef	^	BladeParms	DbKi	HubRadius	-	-	-	
-typedef	^	BladeParms	DbKi	RTrail	{:}	-	-	
+typedef	^	BladeParms	DbKi	TipRadius	-	-	"radius of tip"	
+typedef	^	BladeParms	DbKi	HubRadius	-	-	"radius of hub"
+typedef	^	BladeParms	DbKi	RTrail	{:}	-	-	"radius of trailing edges"
 typedef	^	BladeParms	DbKi	RNodes	{:}	-	-	"sum P%Blade%DR"
 typedef ^	BladeParms	DbKi	AeroCen	{:}	-	-	"The relative location of aerodynamic center"
 ### Umass WINDS ends:

@@ -1,0 +1,77 @@
+*************************** Input file for WInDS in AeroDyn *************************
+NREL 5.0 MW offshore baseline. (Please do not delete or add any line)
+---------------------- GENERAL SETTING -------------------------
+         60     TMax         - Total run time (s). Same as in <...>.fst
+          4     NTP          - Number of time steps stored in the arrays. To keep memory reasonable, usually ~3-4.   
+          8     DtRatio      - Timestep Duration(WINDS) / Timestep Duration(AERODYN) 
+       True     SteadyFlag   - Whether steady inflow wind, if steady, the mean speed of first timestep is used for whole simulation (flag)
+---------------------- BIOT-SAVART LAW ------------------------- 
+      False     WakeFLAG     - Whether simplify the far wake (flag).  
+       True     RollFLAG     - Whether to apply induction to all wake nodes (flag). (True is recommanded)
+        756     RollDist     - Distance in meters, beyond which the wake is have on induction. Only works when WakeFLAG is true.    
+        756     WakeLength   - Distance in meters, beyond which the wake is cut off. -1 disables cutoff. Only works when WakeFLAG is true. 
+       18.0     AveSpeed     - Average wind speed. Only used to calculate wake length.   Only works when WakeFLAG is true.
+      False     UindPast     - If true, the "frozen" filaments will retain the induced velocity from the most recent timestep.  Only works when WakeFLAG is true.
+       True     ViscFLAG     - Whether Vatistas viscous model for filaments (flag)  
+          2     ViscModel    - Index of Vatistas viscous model (Do no change)     
+     0.0001     DELTA        - Smooth parameter   (not used...but do no remove this line)
+------------------NUMERICAL METHODS AND SOLUTION----------------
+       RK4      INTEG        - Numerical integration scheme: RK4 (or RK2, PCC, AB4)   (unquoted string) 
+     1e-10      Tolerance    - Tolerance value for convergence of numerical methods      
+   1000000      CO           - Distance from wake nodes beyond which influence is negligible   
+      0.10      RELAX        - Relaxation value for fixed-point iteration
+       500      MaxIter      - Maximum number of iterations for Kutta-Joukowski theorem 
+      True      ExtrapWake   - Use quadratic extrapolation to guess next bound vorticity value, otherwise use previous value as initial guess
+-------------------BEM (First timestep in WInDS) ---------------
+      1E-3      BEMTOL       - Convergence tolerance
+      1000      MAX_ITER     - Maximum number of allowable iterations
+       0.1      WEIGHT       - Weighting factor on corrections to balance speed with stability (faster as you approach 1, but less stable)       
+------------------------- WIND SHEAR ---------------------------
+     False      ShearFLAG    - Wind shear (flag)
+         1      ShearType    - Power law = 1, log law = 2, log law with stability = 3
+      90.0      ZRef         - Hub height 
+------------------------ TOWER SHADOW -------------------------- 
+     False      TWRFLAG      - Include induced velocity from tower effects (flag)  - Not finished yet -
+         1      TWRUPDOWN    - Upwind rotor=1, Downwind rotor=2
+         1      TWRMETHOD    - Basic potential flow=1, Aerodyn=2
+----------------------- GROUND EFFECTS ------------------------- 
+     False      GroundFLAG   - Include vortex panels to model ground effects (flag)
+     PANEL      GroundMethod - Method for calculating ground effects: PANEL or IMAGE (IMAGE is not ready yet) (unquoted string) 
+        10      SqrtPanels   - Square of panel quantity
+      -100      GroundXmin   - Boundary of panels
+       800      GroundXmax   - Boundary of panels
+      -300      GroundYmin   - Boundary of panels
+       300      GroundYmax   - Boundary of panels  
+----------------------- DYNAMIC STALL -------------------------
+     False      DS_Flag      - Whether to use L-B dynamic stall model for calculating lift and drag
+     False      RelaxTune    - Whether to tune the relaxation factor to find a stable integrator operating position
+         0      StartTime    - Time in seconds to start the DS model
+     False      LoadData     - Whether to load pre-calculated dynamic stall data (DO NOT CHANGE)
+5MW_DS.dat      LoadFile     - File name for pre-calculated dynamic stall data (no '/' or '\' is allowed)  (unquoted string) 
+       0.3      Indicial1    - Indicial coefs, default: A1 = 0.3
+       0.7      Indicial2    - Indicial coefs, default: A2 = 0.7
+      0.14      Indicial3    - Indicial coefs, default: b1 = 0.14
+      0.53      Indicial4    - Indicial coefs, default: b2 = 0.53
+       1.7      TimeConst1   - Time constants, default: Tp = 1.7 
+       3.0      TimeConst2   - Time constants, default: Tf = 3
+       6.0      TimeConst3   - Time constants, default: Tv = 6
+      11.0      TimeConst4   - Time constants, default: Tvl = 11
+      True      WriteData    - Whether to write dynamic stall data to file
+------------------------- ANIMATION ---------------------------
+     False      AnimFLAG     - Whether generate animation of wake evolution for Paraview (flag) 
+--------------------- PARALLEL COMPUTATION -------------------
+      True      Accelerate   - Whether use Treecode/OpenMP.... (flag)  
+         8      OpenMPCores  - Number of OpenMP cores
+---------------------- TREECODE ALGORITHM ---------------------
+     False      TreeFlag     - Whether use Treecode (flag). Only works when Accelerate is true 
+     False      Speedup      - Whether test and record the speedup (flag)
+         0      Parallel     - Number of cores to use. '0' is all cores. '1'is no parallel. 
+       0.5      OpenAngle    - Opening angle theta
+         5      TaylorOrder  - Taylor expansion order
+       500      Maxparnode   - Max particle quantity in one leaf
+     10000      Dist_tol     - Ignored beyond this distance
+     0.001      Delta        - Smoothing parameter  
+-------------------------- OUTPUT -----------------------------
+     False      Element      - Print Cl, Cd,  AOA and V_tot of each blade element  (flag)
+     False      KJCoverg     - Print the convergence of Kutta Joukowski subroutine at every timestep  (flag)
+      True      SumPrint     - Print summary data to "WInDS.sum" (flag)  

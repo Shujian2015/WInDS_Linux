@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Remember to:
+#    module load intel/composer_xe_2015_sp1.0.080
+#    module load intel/mkl_libraries_from_composer_xe_2013_sp1
+#    module load gcc/4.7.4
+
+
+echo ""
+echo ""
+echo ""
+echo ""
+
+
+
+cores=8
+ 
+FAST=FAST_original_glin64      # No space around equals sign
+FAST_WInDS=FAST_WInDS_glin64 
+
+echo "*********  Checking files  *******"
+
+if [ -f $FAST ]; then
+    echo "FAST executable file exists."
+else
+    echo "Cannot find FAST executable file: $FAST. Please check."
+    echo "Exiting shell script." 
+    exit
+fi
+
+
+if [ -f $FAST_WInDS ]; then
+    echo "FAST_WInDS executable file exists."
+else
+    echo "Cannot find FAST_WInDS executable file: $FAST_WInDS. Please check."
+    echo "Exiting shell script." 
+    exit
+fi
+
+
+
+echo ""
+echo ""
+echo "********  Submitting job ********"
+
+
+for i in  below rated  above
+do
+     for j in rigid elastic
+     do
+          for k in DS noDS
+          do
+              bsub -q short -n 1      -W    0:20 -R select[ib] -R "rusage[mem=1000]"  -R "span[hosts=1]" -R select[model=Intel_EM64T]  ./$FAST        ../Test24/$i/FAST_BEM'_'$j'_'$k/Test24.fst
+              bsub -q long  -n $cores -W  200:00 -R select[ib] -R "rusage[mem=1000]"  -R "span[hosts=1]" -R select[model=Intel_EM64T]  ./$FAST_WInDS  ../Test24/$i/FAST_WInDS'_'$j'_'$k/Test24.fst
+          done 
+     done 
+done
+
+
+
+
+echo ""
+echo ""
+echo "******** Showng the jobs list *******"
+echo "(Wait for 5 sec)"
+sleep 5 
+
+bjobs
+
+

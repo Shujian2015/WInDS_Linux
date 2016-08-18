@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ifort -O2 -mkl:parallel -openmp tree_library.f90 WINDS_Treecode.f90 direct_comp.f90 TreeDriver.f90
+
+cp a.out ../
+

@@ -14,3 +14,13 @@ In this repo:
 - plot_win: files to make plots from FAST output files by Matlab
 - doctoral_proposal_slides: my proporsal slides, which can provide a high level description of the research
 - test_treecode_240sec: stand along test files for TreeCode Algorithm. 
+
+If you find it useful, feel free to cite it: 
+
+@inproceedings{gaertner2016improved,
+  title={Improved Free Vortex Wake Models Of Floating Offshore Wind Turbines},
+  author={Gaertner, Evan M and Liu, Shujian and Lackner, Matthew A},
+  booktitle={34th Wind Energy Symposium},
+  pages={1260},
+  year={2016}
+}

@@ -17,6 +17,7 @@ In this repo:
 
 If you find it useful, feel free to cite it: 
 
+```
 @inproceedings{gaertner2016improved,
   title={Improved Free Vortex Wake Models Of Floating Offshore Wind Turbines},
   author={Gaertner, Evan M and Liu, Shujian and Lackner, Matthew A},
@@ -24,3 +25,4 @@ If you find it useful, feel free to cite it:
   pages={1260},
   year={2016}
 }
+```

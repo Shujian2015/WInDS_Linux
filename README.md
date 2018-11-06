@@ -15,7 +15,14 @@ In this repo:
 - doctoral_proposal_slides: my proporsal slides, which can provide a high level description of the research
 - test_treecode_240sec: stand-alone test files for TreeCode Algorithm. 
 
-If you find it useful, feel free to cite it: 
+If you find it useful, feel free to cite: 
+```
+@article{liu2018aeroelastic,
+  title={AEROELASTIC SIMULATION OF WIND TURBINES USING FREE VORTEX METHODS AND STRATEGIES FOR ACCELERATING THE COMPUTATION},
+  author={Liu, Shujian},
+  year={2018}
+}
+```
 
 ```
 @inproceedings{gaertner2016improved,

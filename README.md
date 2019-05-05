@@ -1,4 +1,6 @@
-WInDS for AeroDyn v14 and FAST v8.10
+# WInDS for AeroDyn v14 and FAST v8.10
+
+This repository contains the code for my PhD dissertation: [Aeroelastic Simulation of Wind Turbines Using Free Vortex Methods and Strategies for Accelerating the Computation](https://drive.google.com/file/d/1usUycIwHxfTJySR9sRVLIxfUt0--x2_s/view?usp=sharing)
 
 Check the Wiki here: https://github.com/Shujian2015/WInDS_Linux/wiki.
 
